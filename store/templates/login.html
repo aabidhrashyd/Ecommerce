@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Shopper</title>
+    <title>Login - E-Shopper</title>
     <link href="{% static 'css/stylz.css' %}" rel="stylesheet">
 </head>
 
@@ -13,15 +13,20 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <a href="index.html">E-Shopper</a>
+                <a href="{% url 'apps' %}">E-Shopper</a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="login.html" class="active">Login</a></li>
+                    <li><a href="{% url 'apps' %}">Home</a></li>
+                    <li><a href="{% url 'shop' %}">Shop</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="#">{{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}" class="active">Login</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -30,16 +35,22 @@
     <main>
         <div class="registration-container">
             <h2>Login to Your Account</h2>
-            <form id="login-form" action="submit_login.php" method="POST">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <!-- Display error messages if any -->
+            {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
 
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
                 <button type="submit">Login</button>
             </form>
-            <p>Don't have an account? <a href="register.html">Register here</a></p>
+            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
         </div>
     </main>
 
@@ -56,8 +67,8 @@
     <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>

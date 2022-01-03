@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.apps.AppsConfig',  # Correct reference to the app configuration class
+    'apps.apps.AppsConfig', 
+   # 'store.apps.AppsConfig', # Correct reference to the app configuration class
     # other apps...
+  
 
 ]
 
