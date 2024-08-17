@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+.navbar {
+    background-color: #ffb6c1;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.navbar nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.registration-container {
+    width: 35%;
+    margin: 80px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.registration-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff69b4;
+    font-weight: normal;
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="email"],
+.registration-container input[type="password"] {
+    width: calc(100% - 16px);
+    padding: 12px 8px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+}
+
+.registration-container input[type="text"]:focus,
+.registration-container input[type="email"]:focus,
+.registration-container input[type="password"]:focus {
+    border-color: #ff69b4;
+    outline: none;
+}
+
+.registration-container button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff69b4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registration-container button[type="submit"]:hover {
+    background-color: #ff85c2;
+}
+
+.registration-container p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.registration-container p a {
+    color: #ff69b4;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footer-content {
+    background-color: #ffb6c1;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+}
