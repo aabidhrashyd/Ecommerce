@@ -39,9 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.apps.AppsConfig',  # Correct reference to the app configuration class
     # other apps...
-    'accounts',
-    'django.contrib.auth',  # for authentication
-    'django.contrib.contenttypes',  # needed by auth
+
 ]
 
 
