@@ -110,4 +110,57 @@ document.getElementById('registration-form').addEventListener('submit', function
         event.preventDefault();
         alert("Passwords do not match!");
     }
+    //////
+
+
+
+});
+
+
+//////
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cart = [];
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-product');
+            const productPrice = button.getAttribute('data-price');
+
+            // Add product to cart
+            cart.push({ id: productId, price: productPrice, quantity: 1 });
+
+            // Update cart display
+            updateCart();
+        });
+    });
+
+    function updateCart() {
+        const cartTableBody = document.querySelector('.cart tbody');
+        cartTableBody.innerHTML = ''; // Clear current cart items
+
+        let subtotal = 0;
+
+        cart.forEach(item => {
+            const totalPrice = item.price * item.quantity;
+            subtotal += totalPrice;
+
+            cartTableBody.innerHTML += `
+                <tr>
+                    <td>Product ${item.id}</td>
+                    <td>$${item.price}</td>
+                    <td>
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="${item.quantity}">
+                        <button class="quantity-btn">+</button>
+                    </td>
+                    <td>$${totalPrice}</td>
+                    <td><button class="remove-btn">X</button></td>
+                </tr>
+            `;
+        });
+
+        document.querySelector('.cart-summary .subtotal').innerText = `Subtotal: $${subtotal}`;
+        document.querySelector('.cart-summary .total').innerText = `Total: $${subtotal + 10}`; // Adding $10 shipping
+    }
 });
